@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Care Management Game</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Care Coordinator</p>
+          <h1>Care Management Game</h1>
+        </div>
+        <button id="new-game-btn" class="secondary-btn">New Game</button>
+      </header>
+
+      <main class="game-layout">
+        <section class="panel status-panel">
+          <div class="patient-header">
+            <div class="avatar">A</div>
+            <div>
+              <h2 id="patient-name">Ava Reed</h2>
+              <p id="day-label">Day 1 of 14</p>
+            </div>
+          </div>
+
+          <div class="stat-grid">
+            <div class="stat-card health">
+              <span>Health</span>
+              <strong id="health-stat">72</strong>
+            </div>
+            <div class="stat-card mood">
+              <span>Mood</span>
+              <strong id="mood-stat">68</strong>
+            </div>
+            <div class="stat-card energy">
+              <span>Energy</span>
+              <strong id="energy-stat">64</strong>
+            </div>
+            <div class="stat-card money">
+              <span>Funds</span>
+              <strong id="funds-stat">120</strong>
+            </div>
+            <div class="stat-card care">
+              <span>Care Score</span>
+              <strong id="care-stat">0</strong>
+            </div>
+            <div class="stat-card stress">
+              <span>Stress</span>
+              <strong id="stress-stat">32</strong>
+            </div>
+          </div>
+
+          <div class="progress-block">
+            <label>Care goal</label>
+            <div class="progress-bar">
+              <div id="care-progress" class="progress-fill"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel action-panel">
+          <h3>Today's actions</h3>
+          <div id="action-buttons" class="action-list"></div>
+        </section>
+
+        <section class="panel log-panel">
+          <h3>Care log</h3>
+          <ul id="log-list" class="log-list"></ul>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
