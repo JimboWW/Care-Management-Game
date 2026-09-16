@@ -97,14 +97,16 @@ The project uses:
 ## Development Roadmap
 
 Refine the visual mockups.
-Build the interactive weekly care worksheet.
-Add local persistence for completed tasks.
+Completed: build the interactive weekly care worksheet.
+Completed: add local persistence for completed tasks.
 Develop robot profiles, skills, personalities, and progression.
 Add household services, finances, and manufacturer testing.
 Add replacement and career-history systems.
 Consider optional AI features after the core game works reliably.
-Development Status
-The project is currently in the mockup and design phase. Static screens are being refined before interactive game systems are added
+
+**Development Status**
+
+The interactive weekly care worksheet is implemented with browser-local persistence. Broader game systems remain in development.
 
 ## Notes on conversations about future improvements
 
@@ -133,7 +135,7 @@ This adds a powerful theme: the player is not merely using technology—they are
 
 ## Running the Project
 
-Open `index.html` directly in a browser, or start a local server from this folder:
+Open `weekly-tracker-mockup.html` directly in a browser, or start a local server from this folder:
 
 ````powershell
 python -m http.server 8000
