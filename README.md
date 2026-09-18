@@ -94,19 +94,69 @@ The project uses:
 - JSON
 - Browser `localStorage`
 
+## Product Direction
+
+This project is both a practical personal tool and a framework for imagining a caregiving robot. The practical tool comes first. Game mechanics should make useful work more visible and engaging without making essential care dependent on points, rewards, an internet connection, or an AI service.
+
+The system has four connected layers:
+
+1. **Essential care:** crisis-mode tasks and other routines that protect health and need to remain simple, visible, and dependable.
+2. **Self-management:** household tasks, preparation, planning, routines, assistive equipment, and other systems that reduce effort and increase independence.
+3. **Robot training:** documenting routines, designing interfaces, testing workflows, and improving automation as forms of training and infrastructure work.
+4. **Game layer:** robot identity, skills, personality, finances, progression, narrative, and optional rewards built around the real work.
+
 ## Development Roadmap
 
-Refine the visual mockups.
-Completed: build the interactive weekly care worksheet.
-Completed: add local persistence for completed tasks.
-Develop robot profiles, skills, personalities, and progression.
-Add household services, finances, and manufacturer testing.
-Add replacement and career-history systems.
-Consider optional AI features after the core game works reliably.
+### Foundation: reliable personal tool
+
+- [x] Refine the visual mock-up for the first care worksheet.
+- [x] Build the interactive Weekly Essential Care tracker.
+- [x] Add local persistence for essential-care completions and scores.
+- [x] Keep essential care separate from broader household and optional game systems.
+- [x] Limit essential care to self-catheterization, water intake, and bowel care.
+- [x] Add a separate Weekly Long-Term Care tracker for walking, bath, arm pulls, pedal, sit/stand, weight, and meal-calorie checks.
+- [x] Add a separate Weekly Household Tasks tracker for sanitation, household maintenance, personal care, dishes, and appreciation.
+- [ ] Add additional custom trackers for other self-management areas.
+- [ ] Make the worksheet comfortable and dependable on a laptop, tablet, and phone.
+
+### Self-management system
+
+- [ ] Add separate areas for support tasks, household tasks, routines, and other non-crisis work.
+- [ ] Record assistive equipment, household adaptations, and automation that reduce effort.
+- [ ] Add reusable procedures for recurring activities instead of treating every action as a one-time task.
+- [ ] Provide a simple log for problems, discoveries, and changes that improve daily life.
+
+### Robot training and progress
+
+- [ ] Treat interface design, workflow testing, documentation, and automation work as robot training activity.
+- [ ] Create a robot profile with a name, model, personality, skills, strengths, and weaknesses.
+- [ ] Represent learning through feedback, successful routines, improved systems, and completed training work.
+- [ ] Add manufacturer assignments and evaluation only after the personal tool remains useful on its own.
+
+### Financial model
+
+- [ ] Track the value credited to the robot for completed care and household work.
+- [ ] Track compensation credited to the user for care, supervision, testing, training, and system development.
+- [ ] Track household costs such as equipment, supplies, services, maintenance, and future robot upgrades.
+- [ ] Show the difference between robot earnings, user earnings, household costs, and overall household benefit.
+- [ ] Use financial progress as the primary gamification system rather than relying mainly on points or streaks.
+
+### Optional companion and game features
+
+- [ ] Add a clearly labeled button that opens the user’s preferred AI service in a separate tab.
+- [ ] Use an external AI conversation as an optional robot persona or companion, without making it responsible for essential records.
+- [ ] Add narrative events, robot progression, manufacturer messages, and career history only when they support the practical tool.
+- [ ] Consider a broader world newsfeed or shared robot-learning story after the personal system is stable.
+
+### Privacy and portability decisions
+
+- [ ] Keep local browser storage as the default while the application is personal and device-local.
+- [ ] Avoid accounts, cloud synchronization, and backend storage until their convenience clearly outweighs their security and maintenance costs.
+- [ ] Revisit multi-device synchronization only as a deliberate product decision, not as an automatic consequence of adding game features.
 
 **Development Status**
 
-The interactive weekly care worksheet is implemented with browser-local persistence. Broader game systems remain in development.
+The Weekly Essential Care, Weekly Long-Term Care, and Weekly Household Tasks trackers are implemented with independent browser-local persistence. The next design task is to add additional self-management areas without mixing them into the essential list. Broader game systems remain in development.
 
 ## Notes on conversations about future improvements
 
@@ -135,11 +185,12 @@ This adds a powerful theme: the player is not merely using technology—they are
 
 ## Running the Project
 
-Open `weekly-tracker-mockup.html` directly in a browser, or start a local server from this folder:
+Open `index.html` directly in a browser, or start a local server from this folder:
 
-````powershell
+```powershell
 python -m http.server 8000
+```
 
 Then visit:
 
-http://localhost:8000
+`http://localhost:8000`
