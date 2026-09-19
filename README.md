@@ -133,6 +133,7 @@ Accuracy and clarity take priority over game presentation. The game may provide 
 - [x] Limit essential care to self-catheterization, water intake, and bowel care.
 - [x] Add a separate Weekly Long-Term Care tracker for walking, bath, arm pulls, pedal, sit/stand, weight, and meal-calorie checks.
 - [x] Add a separate Weekly Household Tasks tracker for sanitation, household maintenance, personal care, dishes, and appreciation.
+- [x] Add a visual mock-up for the real-world care manual and future custom trackers.
 - [ ] Add additional custom trackers for other self-management areas.
 - [ ] Make the worksheet comfortable and dependable on a laptop, tablet, and phone.
 
@@ -183,7 +184,7 @@ Accuracy and clarity take priority over game presentation. The game may provide 
 
 **Development Status**
 
-The Weekly Essential Care, Weekly Long-Term Care, and Weekly Household Tasks trackers are implemented with independent browser-local persistence. The next design task is to add additional self-management areas without mixing them into the essential list. Broader game systems remain in development.
+The Weekly Essential Care, Weekly Long-Term Care, and Weekly Household Tasks trackers are implemented with independent browser-local persistence. A visual mock-up now establishes the care-manual and custom-tracker structure. The next implementation step is to make selected manual records and custom trackers editable and locally persistent. Broader game systems remain in development.
 
 ## Notes on conversations about future improvements
 
