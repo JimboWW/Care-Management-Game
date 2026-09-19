@@ -105,6 +105,23 @@ The system has four connected layers:
 3. **Robot training:** documenting routines, designing interfaces, testing workflows, and improving automation as forms of training and infrastructure work.
 4. **Game layer:** robot identity, skills, personality, finances, progression, narrative, and optional rewards built around the real work.
 
+## Real-World Care Manual
+
+The long-term foundation of the application is a detailed, accurate record of the user's real self-care system. The fictional robot learns from this record, but the record must remain useful without the game and understandable to a trusted human caregiver.
+
+The care manual may eventually include:
+
+- Medications, schedules, instructions, and important cautions
+- Equipment, assistive devices, and household adaptations
+- Supply inventories, replenishment routines, and storage locations
+- Step-by-step care procedures and preparation checklists
+- Photos showing how equipment or supplies should be arranged
+- Notes about preferences, warning signs, problems, and successful solutions
+- A concise, current summary that can be reviewed with a doctor
+- A caregiver handoff view for a trusted person who may need to help
+
+Accuracy and clarity take priority over game presentation. The game may provide motivation, context, and a sense of progress, but it must not remove important detail or imply that fictional robot mechanics are medical guidance. Health information should be clearly identified as personal documentation, with clinical questions left for the user's healthcare professionals.
+
 ## Development Roadmap
 
 ### Foundation: reliable personal tool
@@ -125,6 +142,16 @@ The system has four connected layers:
 - [ ] Record assistive equipment, household adaptations, and automation that reduce effort.
 - [ ] Add reusable procedures for recurring activities instead of treating every action as a one-time task.
 - [ ] Provide a simple log for problems, discoveries, and changes that improve daily life.
+
+### Detailed care manual
+
+- [ ] Add structured records for medications, equipment, supplies, and care procedures.
+- [ ] Support step-by-step instructions with preparation, completion, and troubleshooting notes.
+- [ ] Add secure local records for setup photos and other reference images.
+- [ ] Distinguish personal documentation from medical advice and preserve the user's exact wording where accuracy matters.
+- [ ] Create a concise doctor-review summary without replacing the detailed manual.
+- [ ] Create a caregiver handoff view that presents practical instructions without exposing unnecessary game information.
+- [ ] Add revision dates and change history so important care information can be reviewed and updated deliberately.
 
 ### Robot training and progress
 
