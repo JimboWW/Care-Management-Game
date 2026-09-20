@@ -65,6 +65,9 @@ The worksheet is a core personal care tool and should remain useful independentl
 - Real care needs come before game mechanics.
 - The game should be engaging without becoming stressful or judgmental.
 - Essential care functions should remain simple and reliable.
+- Comprehensive information should not require comprehensive daily administration.
+- Every new feature should justify its recording effort by reducing effort, improving clarity, or preventing a meaningful problem.
+- The system should be useful for one person managing their own care before it is expanded for teams or institutions.
 - Game progress should never be required to record care tasks.
 - The application should work locally and preserve user privacy.
 
@@ -122,6 +125,8 @@ The care manual may eventually include:
 
 Accuracy and clarity take priority over game presentation. The game may provide motivation, context, and a sense of progress, but it must not remove important detail or imply that fictional robot mechanics are medical guidance. Health information should be clearly identified as personal documentation, with clinical questions left for the user's healthcare professionals.
 
+The care manual should grow incrementally. Detailed records, photos, and handoff views are valuable when they solve a real problem, but they should remain optional and easy to maintain. The default workflow should favor quick recording, sensible defaults, and reuse of information over repeated data entry.
+
 ## Development Roadmap
 
 ### Foundation: reliable personal tool
@@ -134,14 +139,16 @@ Accuracy and clarity take priority over game presentation. The game may provide 
 - [x] Add a separate Weekly Long-Term Care tracker for walking, bath, arm pulls, pedal, sit/stand, weight, and meal-calorie checks.
 - [x] Add a separate Weekly Household Tasks tracker for sanitation, household maintenance, personal care, dishes, and appreciation.
 - [x] Add a visual mock-up for the real-world care manual and future custom trackers.
-- [ ] Add additional custom trackers for other self-management areas.
-- [ ] Make the worksheet comfortable and dependable on a laptop, tablet, and phone.
+- [x] Add an initial care-system snapshot covering equipment, home adaptations, and food and medication routines.
+- [x] Identify the additional custom tracker areas needed for self-management.
+- [x] Verify the worksheet on a laptop, tablet, and phone, including tapping, scrolling, highlighting, reset controls, and local persistence.
 
 ### Self-management system
 
-- [ ] Add separate areas for support tasks, household tasks, routines, and other non-crisis work.
-- [ ] Record assistive equipment, household adaptations, and automation that reduce effort.
-- [ ] Add reusable procedures for recurring activities instead of treating every action as a one-time task.
+- [x] Define separate areas for support tasks, household tasks, routines, and other non-crisis work in the mock-up.
+- [x] Record assistive equipment, household adaptations, and automation that reduce effort.
+- [x] Identify reusable procedures for recurring activities instead of treating every action as a one-time task.
+- [x] Add detailed steps to reusable procedures only when they solve a real problem.
 - [ ] Provide a simple log for problems, discoveries, and changes that improve daily life.
 
 ### Detailed care manual
