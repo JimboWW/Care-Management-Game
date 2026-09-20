@@ -149,7 +149,7 @@ The care manual should grow incrementally. Detailed records, photos, and handoff
 - [x] Record assistive equipment, household adaptations, and automation that reduce effort.
 - [x] Identify reusable procedures for recurring activities instead of treating every action as a one-time task.
 - [x] Add detailed steps to reusable procedures only when they solve a real problem.
-- [ ] Provide a simple log for problems, discoveries, and changes that improve daily life.
+- [x] Add a simple local log for problems, discoveries, and changes that improve daily life.
 
 ### Detailed care manual
 

@@ -730,7 +730,46 @@
         <p class="procedure-note">Feeding, brushing teeth, and dressing are recognized as possible future procedures, but are left out of the active list until they become useful to document.</p>
       </section>
 
+      <section class="panel life-log-panel">
+        <div class="worksheet-heading">
+          <div>
+            <p class="eyebrow">Self-management log</p>
+            <h2>Problems, discoveries, and improvements</h2>
+            <p class="section-note">Capture something useful when it happens. Keep the entry short; details can be added only when they matter.</p>
+          </div>
+          <span class="manual-status">Saved on this device</span>
+        </div>
+
+        <form id="life-log-form" class="life-log-form">
+          <div class="life-log-fields">
+            <label>
+              Date
+              <input id="life-log-date" name="date" type="date" required />
+            </label>
+            <label>
+              Type
+              <select id="life-log-type" name="type">
+                <option>Problem</option>
+                <option>Discovery</option>
+                <option>Improvement</option>
+              </select>
+            </label>
+            <label>
+              Short title
+              <input id="life-log-title" name="title" type="text" maxlength="80" placeholder="What happened?" required />
+            </label>
+          </div>
+          <label>
+            Notes
+            <textarea id="life-log-notes" name="notes" rows="3" maxlength="600" placeholder="What did you learn, change, or solve?"></textarea>
+          </label>
+          <button class="mini-button alt" type="submit">Save entry</button>
+        </form>
+
+        <div id="life-log-entries" class="life-log-entries" aria-live="polite"></div>
+      </section>
+
     </main>
-    <script src="care-sheet.js"></script>
+    <script src="care-sheet.js?v=2"></script>
   </body>
 </html>

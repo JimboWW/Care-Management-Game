@@ -1,4 +1,5 @@
 const currentDate = document.getElementById('currentDate');
+const LIFE_LOG_KEY = 'careLifeLog';
 const TRACKERS = [
   {
     id: 'essential',
@@ -231,6 +232,101 @@ function initializeWorksheet() {
   document.getElementById('reset-week')?.addEventListener('click', () => {
     TRACKERS.forEach((tracker) => handleReset(tracker));
   });
+
+  initializeLifeLog();
+}
+
+function initializeLifeLog() {
+  const form = document.getElementById('life-log-form');
+  const dateInput = document.getElementById('life-log-date');
+  const entriesContainer = document.getElementById('life-log-entries');
+
+  if (!form || !dateInput || !entriesContainer) {
+    return;
+  }
+
+  dateInput.value = new Date().toISOString().slice(0, 10);
+
+  const readEntries = () => {
+    try {
+      const entries = JSON.parse(localStorage.getItem(LIFE_LOG_KEY) || '[]');
+      return Array.isArray(entries) ? entries : [];
+    } catch (error) {
+      return [];
+    }
+  };
+
+  const saveEntries = (entries) => {
+    localStorage.setItem(LIFE_LOG_KEY, JSON.stringify(entries));
+  };
+
+  const renderEntries = () => {
+    const entries = readEntries();
+    entriesContainer.replaceChildren();
+
+    if (!entries.length) {
+      const emptyMessage = document.createElement('p');
+      emptyMessage.className = 'life-log-empty';
+      emptyMessage.textContent = 'No entries yet. Add a problem, discovery, or improvement when one is useful to remember.';
+      entriesContainer.appendChild(emptyMessage);
+      return;
+    }
+
+    entries.forEach((entry, index) => {
+      const card = document.createElement('article');
+      card.className = 'life-log-entry';
+
+      const heading = document.createElement('div');
+      heading.className = 'life-log-entry-heading';
+      const title = document.createElement('h3');
+      title.textContent = entry.title;
+      const deleteButton = document.createElement('button');
+      deleteButton.className = 'life-log-delete';
+      deleteButton.type = 'button';
+      deleteButton.textContent = 'Delete';
+      deleteButton.addEventListener('click', () => {
+        const nextEntries = readEntries();
+        nextEntries.splice(index, 1);
+        saveEntries(nextEntries);
+        renderEntries();
+      });
+      heading.append(title, deleteButton);
+
+      const metadata = document.createElement('p');
+      metadata.className = 'life-log-entry-meta';
+      metadata.textContent = `${entry.type} · ${entry.date}`;
+      card.append(heading, metadata);
+
+      if (entry.notes) {
+        const notes = document.createElement('p');
+        notes.className = 'life-log-entry-notes';
+        notes.textContent = entry.notes;
+        card.appendChild(notes);
+      }
+
+      entriesContainer.appendChild(card);
+    });
+  };
+
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const formData = new FormData(form);
+    const entry = {
+      date: formData.get('date'),
+      type: formData.get('type'),
+      title: formData.get('title').trim(),
+      notes: formData.get('notes').trim()
+    };
+
+    const entries = readEntries();
+    entries.unshift(entry);
+    saveEntries(entries);
+    form.reset();
+    dateInput.value = new Date().toISOString().slice(0, 10);
+    renderEntries();
+  });
+
+  renderEntries();
 }
 
 if (document.readyState === 'loading') {

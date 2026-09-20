@@ -464,6 +464,102 @@ h2 {
   margin: 16px 0 0;
 }
 
+.life-log-panel {
+  margin-top: 22px;
+  padding: 24px;
+}
+
+.life-log-form {
+  border-top: 1px solid var(--line);
+  padding-top: 18px;
+}
+
+.life-log-form label {
+  color: var(--muted);
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.life-log-fields {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 150px 150px 1fr;
+  margin-bottom: 12px;
+}
+
+.life-log-form input,
+.life-log-form select,
+.life-log-form textarea {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--ink);
+  display: block;
+  font: inherit;
+  margin-top: 6px;
+  padding: 9px 10px;
+  width: 100%;
+}
+
+.life-log-form textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.life-log-form button {
+  margin-top: 14px;
+}
+
+.life-log-entries {
+  display: grid;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.life-log-empty {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.life-log-entry {
+  border-left: 3px solid var(--accent);
+  background: var(--surface-soft);
+  padding: 13px 15px;
+}
+
+.life-log-entry-heading {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.life-log-entry h3 {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.life-log-entry-meta {
+  color: var(--muted);
+  font-size: 0.78rem;
+  margin: 4px 0 0;
+}
+
+.life-log-entry-notes {
+  margin: 10px 0 0;
+  white-space: pre-wrap;
+}
+
+.life-log-delete {
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 0.78rem;
+  padding: 4px;
+}
+
 .custom-tracker-list {
   border-top: 1px solid var(--line);
 }
@@ -614,9 +710,14 @@ h2 {
   .header-actions,
   .custom-tracker-row,
   .manual-guidance,
-  .procedure-row {
+  .procedure-row,
+  .life-log-fields {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .life-log-fields {
+    display: flex;
   }
 
   .manual-grid,
