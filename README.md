@@ -153,7 +153,11 @@ The care manual should grow incrementally. Detailed records, photos, and handoff
 
 ### Detailed care manual
 
-- [ ] Add structured records for medications, equipment, supplies, and care procedures.
+- [x] Create initial structured record drafts for medications, equipment, supplies, and care procedures.
+- [x] Add a lightweight editable care-manual record framework with local persistence.
+- [x] Add a medication schedule transcription draft with a verification note, allergy, and pharmacy contact information.
+- [x] Add a supply replenishment draft with subscription cadence, quantities, brands, and as-needed items.
+- [x] Add the first detailed procedure record for the portable cart's top shelf.
 - [ ] Support step-by-step instructions with preparation, completion, and troubleshooting notes.
 - [ ] Add secure local records for setup photos and other reference images.
 - [ ] Distinguish personal documentation from medical advice and preserve the user's exact wording where accuracy matters.

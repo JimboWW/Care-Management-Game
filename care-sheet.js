@@ -1,5 +1,17 @@
 const currentDate = document.getElementById('currentDate');
 const LIFE_LOG_KEY = 'careLifeLog';
+const MANUAL_RECORDS_KEY = 'careManualRecords';
+const STARTER_MANUAL_RECORDS = [
+  {
+    id: 'portable-cart-top-shelf',
+    category: 'Equipment',
+    title: 'Portable cart - top shelf',
+    description: 'The cart has three shelves and two sides, labeled left and right. This record covers the top shelf only.',
+    preparation: 'Identify the portable cart and inspect the top shelf on both the left and right sides.',
+    completion: 'A tall cylindrical body-wash bottle is present in a small plastic container, together with a short bottle of hand sanitizer in the same container.',
+    notes: 'The remaining shelves and side-specific contents have not yet been documented. Add photo references later if they make setup easier.'
+  }
+];
 const TRACKERS = [
   {
     id: 'essential',
@@ -234,6 +246,7 @@ function initializeWorksheet() {
   });
 
   initializeLifeLog();
+  initializeManualRecords();
 }
 
 function initializeLifeLog() {
@@ -327,6 +340,124 @@ function initializeLifeLog() {
   });
 
   renderEntries();
+}
+
+function initializeManualRecords() {
+  const form = document.getElementById('manual-record-form');
+  const list = document.getElementById('manual-record-list');
+  const cancelButton = document.getElementById('manual-record-cancel');
+
+  if (!form || !list || !cancelButton) {
+    return;
+  }
+
+  const fields = {
+    id: document.getElementById('manual-record-id'),
+    category: document.getElementById('manual-record-category'),
+    title: document.getElementById('manual-record-title'),
+    description: document.getElementById('manual-record-description'),
+    preparation: document.getElementById('manual-record-preparation'),
+    completion: document.getElementById('manual-record-completion'),
+    notes: document.getElementById('manual-record-notes')
+  };
+
+  const readRecords = () => {
+    try {
+      const savedRecords = localStorage.getItem(MANUAL_RECORDS_KEY);
+      if (!savedRecords) {
+        return STARTER_MANUAL_RECORDS.map((record) => ({ ...record }));
+      }
+      const records = JSON.parse(savedRecords);
+      return Array.isArray(records) ? records : [];
+    } catch (error) {
+      return [];
+    }
+  };
+
+  const saveRecords = (records) => {
+    localStorage.setItem(MANUAL_RECORDS_KEY, JSON.stringify(records));
+  };
+
+  const resetForm = () => {
+    form.reset();
+    fields.id.value = '';
+    cancelButton.hidden = true;
+  };
+
+  const renderRecords = () => {
+    const records = readRecords();
+    list.replaceChildren();
+
+    if (!records.length) {
+      const emptyMessage = document.createElement('p');
+      emptyMessage.className = 'manual-record-empty';
+      emptyMessage.textContent = 'No additional records yet. Add one only when it will be useful.';
+      list.appendChild(emptyMessage);
+      return;
+    }
+
+    records.forEach((record) => {
+      const item = document.createElement('article');
+      item.className = 'manual-record-item';
+      const heading = document.createElement('div');
+      heading.className = 'manual-record-item-heading';
+      const titleBlock = document.createElement('div');
+      const title = document.createElement('h4');
+      title.textContent = record.title;
+      const category = document.createElement('p');
+      category.textContent = record.category;
+      titleBlock.append(title, category);
+
+      const actions = document.createElement('div');
+      actions.className = 'manual-record-item-actions';
+      const editButton = document.createElement('button');
+      editButton.type = 'button';
+      editButton.textContent = 'Edit';
+      editButton.addEventListener('click', () => {
+        Object.keys(fields).forEach((key) => {
+          fields[key].value = record[key] || '';
+        });
+        cancelButton.hidden = false;
+        fields.title.focus();
+      });
+      const deleteButton = document.createElement('button');
+      deleteButton.type = 'button';
+      deleteButton.textContent = 'Delete';
+      deleteButton.addEventListener('click', () => {
+        saveRecords(readRecords().filter((savedRecord) => savedRecord.id !== record.id));
+        renderRecords();
+      });
+      actions.append(editButton, deleteButton);
+      heading.append(titleBlock, actions);
+      item.appendChild(heading);
+
+      [record.description, record.preparation, record.completion, record.notes].filter(Boolean).forEach((text) => {
+        const detail = document.createElement('p');
+        detail.textContent = text;
+        item.appendChild(detail);
+      });
+      list.appendChild(item);
+    });
+  };
+
+  cancelButton.addEventListener('click', resetForm);
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const record = Object.fromEntries(Object.keys(fields).map((key) => [key, fields[key].value.trim()]));
+    const records = readRecords();
+    const existingIndex = records.findIndex((savedRecord) => savedRecord.id === record.id && record.id);
+    if (existingIndex >= 0) {
+      records[existingIndex] = record;
+    } else {
+      record.id = `${Date.now()}-${Math.random().toString(16).slice(2)}`;
+      records.unshift(record);
+    }
+    saveRecords(records);
+    resetForm();
+    renderRecords();
+  });
+
+  renderRecords();
 }
 
 if (document.readyState === 'loading') {
